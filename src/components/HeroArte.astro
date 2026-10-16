@@ -1,0 +1,45 @@
+---
+// La V de Valeny, grande. Se dibuja una sola vez al cargar y el nodo aparece al final.
+---
+<svg class="arte" viewBox="0 0 48 48" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <path class="arte-v" pathLength="1" d="M7 9L24 40L41 9" />
+  <circle class="arte-nodo" cx="41" cy="9" r="5.2" />
+</svg>
+
+<style>
+  .arte {
+    display: block;
+    width: min(26rem, 100%);
+    height: auto;
+    overflow: visible;
+  }
+  .arte-v {
+    fill: none;
+    stroke: var(--violeta);
+    stroke-width: 6.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+  .arte-nodo {
+    fill: var(--violeta);
+    transform-origin: 41px 9px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .arte-v {
+      animation: dibuja 1.1s 0.25s cubic-bezier(0.3, 0.7, 0.2, 1) both;
+    }
+    .arte-nodo {
+      animation: nodo 0.45s 1.2s cubic-bezier(0.3, 1.6, 0.4, 1) both;
+    }
+  }
+  @keyframes dibuja {
+    from { stroke-dashoffset: 1; }
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes nodo {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+</style>

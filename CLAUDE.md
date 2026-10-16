@@ -10,16 +10,19 @@ Objetivo único: que el visitante escriba por WhatsApp.
 ## Reglas
 - **Este repositorio no contiene datos de clientes.** Nada de teléfonos, reseñas, fotos ni menús de restaurantes. Si algún día se muestra un caso, solo con permiso escrito del cliente.
 - **Sin inventar:** ni testimonios, ni cifras de clientes, ni años de experiencia, ni portafolio sin permiso.
-- **Microsoft:** sin logotipos y sin frases de alianza o distribución oficial. Valeny Store es un revendedor independiente (el aviso está en el pie). No afirmar "originales" ni "autorizadas" sin respaldo.
+- **Microsoft:** sin logotipos y sin frases de alianza o distribución oficial. Valeny Store es un revendedor independiente. La nota de marca registrada y no afiliación va junto al bloque de licencias de la portada (no en el pie). No afirmar "originales" ni "autorizadas" sin respaldo.
 - **Seguridad:** solo afirmaciones verificables. Hoy: el sitio no usa cookies, rastreadores, formularios ni fuentes de terceros. Si eso cambia, se actualiza la página de privacidad.
 - Toda la UI en español de México. Cada dependencia nueva se justifica.
 
 ## Dirección de diseño: "Papel"
 - Paleta (en `src/styles/global.css`): papel `#f7f6fb`, tinta `#16121f`, violeta `#5b2bd9`, lila `#e9e3fb`, gris `#655f78`. Violeta plano, **sin degradados**.
 - Una sola familia: Bricolage Grotesque (autoalojada con Fontsource).
-- Movimiento: la ilustración del teléfono de la portada (QR, menú, mensaje) se anima **una sola vez** al cargar, y el relleno violeta de las filas de soluciones responde al cursor. Todo respeta `prefers-reduced-motion`. La ilustración es genérica a propósito: no muestra ningún restaurante real.
+- Movimiento: la V de la portada se dibuja una vez al cargar; la ilustración del teléfono (Webs) y la de la licencia (Licencias) se animan **una sola vez**, al entrar en pantalla (`src/scripts/enVista.ts`). Todo respeta `prefers-reduced-motion` y se queda en el estado final. Las ilustraciones son genéricas a propósito: no muestran restaurantes reales, claves reales ni logotipos de terceros.
 - Escala de 5 tamaños. Sin tarjetas iguales, sin mayúsculas decorativas, sin iconos de adorno.
 - Antes de cambiar el diseño, cargar la skill `frontend-design` y revisar la lista anti-slop del CLAUDE.md de `design`.
+
+## Estructura de la portada
+Primero la empresa (titular, "Qué es Valeny" con Simple / Seguro / Tecnológico) y después las soluciones, cada una con su logotipo y su animación: **Valeny Webs** (logotipo propio: ventana con la V) y **Valeny Store** (logotipo `src/assets/valeny-store.webp`, entregado por el cliente). Al sumar una solución nueva, agregar un bloque `<article class="solucion">` en `index.astro`.
 
 ## Datos
 - `src/data/valeny.json`: contacto (WhatsApp, correo), dominio y datos de Valeny Store.

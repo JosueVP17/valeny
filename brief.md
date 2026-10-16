@@ -21,7 +21,7 @@ Que el visitante escriba por WhatsApp. Un solo botón principal en todo el sitio
 - **Color:** morado (pedido explícito del cliente).
 - **Personalidad (3 palabras):** minimalista, seguro, tecnológico.
 - **Alcance:** "global". Debe poder crecer a más soluciones sin rediseñarse. Idioma inicial: español de México.
-- **Logo:** no existe. Se diseña un logotipo (wordmark y, si ayuda, un monograma) como parte del trabajo.
+- **Logo:** diseñado en este proyecto (V con nodo + palabra "valeny"). Valeny Store ya tenía su propio logotipo (V y S entrelazadas, con degradado), que se usa tal cual en su bloque. "Valeny Webs" tiene un logotipo propio (ventana con la V).
 
 ## Quién está detrás
 Estudiante de licenciatura e ingeniero de aprendizaje automático (ML). No tiene años de experiencia diseñando webs. El sitio no debe inflar credenciales ni inventar trayectoria: la confianza viene de lo concreto (qué incluye cada plan, cómo se trabaja, qué se promete y qué no).
@@ -29,7 +29,7 @@ Estudiante de licenciatura e ingeniero de aprendizaje automático (ML). No tiene
 ## Reglas de contenido
 - Sin portafolio ni casos por ahora: no hay permiso de ningún cliente para mostrarlos.
 - Sin testimonios, cifras de clientes ni logotipos de terceros.
-- Sin logotipos de Microsoft ni frases que sugieran alianza o distribución oficial (no hay acreditación). El pie aclara que Valeny Store es un revendedor independiente. No afirmar "originales" ni "autorizadas" sin respaldo.
+- Sin logotipos de Microsoft ni frases que sugieran alianza o distribución oficial (no hay acreditación). La nota de marca registrada y no afiliación va junto al bloque de licencias. No afirmar "originales" ni "autorizadas" sin respaldo.
 - Afirmaciones de seguridad solo si son verificables y concretas (HTTPS, sin base de datos ni cuentas en los sitios de restaurantes, qué datos se guardan y cuáles no). Nada de "máxima seguridad" sin respaldo.
 
 ## Planes de webs para restaurantes

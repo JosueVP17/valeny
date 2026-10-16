@@ -1,42 +1,94 @@
 ---
+import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
+import HeroArte from "../components/HeroArte.astro";
+import LogoWebs from "../components/LogoWebs.astro";
 import DemoTelefono from "../components/DemoTelefono.astro";
+import DemoLicencia from "../components/DemoLicencia.astro";
+import logoStore from "../assets/valeny-store.webp";
 import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
 ---
 <Base>
   <section class="contenedor portada" aria-labelledby="titulo-portada">
     <div class="portada-texto">
       <h1 id="titulo-portada">Lo digital de tu negocio, resuelto por WhatsApp.</h1>
-      <p class="lema">Webs para restaurantes y licencias de Microsoft. Hablas con una persona, no con un formulario.</p>
+      <p class="lema">Valeny es una empresa de tecnología que crea soluciones para negocios. Hablas con una persona, no con un formulario.</p>
       <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
     </div>
-    <DemoTelefono />
+    <div class="portada-arte">
+      <HeroArte />
+    </div>
   </section>
 
-  <section class="soluciones" aria-labelledby="titulo-soluciones">
-    <h2 id="titulo-soluciones" class="solo-lectores">Soluciones</h2>
-    <a class="fila" href="/webs">
-        <span class="contenedor fila-in">
-          <span class="fila-titulo">Webs para restaurantes</span>
-          <span class="fila-texto">Menú digital, código QR para las mesas, pedido para recoger y reservaciones por WhatsApp. Cada restaurante, con su propio diseño y su propio dominio.</span>
-          <span class="fila-accion">Ver planes</span>
-        </span>
-    </a>
-    <a class="fila" href={valeny.tienda.url}>
-        <span class="contenedor fila-in">
-          <span class="fila-titulo">Licencias de Microsoft</span>
-          <span class="fila-texto">Licencias de software de Microsoft para personas y negocios, a la venta en {valeny.tienda.nombre}.</span>
-          <span class="fila-accion">Ir a {valeny.tienda.nombre}</span>
-        </span>
-    </a>
+  <section class="quienes seccion" aria-labelledby="titulo-valeny">
+    <div class="contenedor quienes-in">
+      <h2 id="titulo-valeny">Qué es Valeny</h2>
+      <div class="quienes-cuerpo">
+        <p class="quienes-grande">Hacemos tecnología para que un negocio trabaje mejor sin tener que volverse experto en software.</p>
+        <dl class="principios">
+          <div>
+            <dt>Simple</dt>
+            <dd>Empiezas con un mensaje de WhatsApp. Sin formularios ni trámites largos.</dd>
+          </div>
+          <div>
+            <dt>Seguro</dt>
+            <dd>Cuidamos lo que construimos. Nuestros sitios no usan cookies ni rastreadores, y los de restaurantes no guardan los datos de sus clientes.</dd>
+          </div>
+          <div>
+            <dt>Tecnológico</dt>
+            <dd>Herramientas modernas y soluciones hechas a la medida de cada negocio.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
   </section>
+
+  <section class="contenedor soluciones-intro" aria-labelledby="titulo-soluciones">
+    <h2 id="titulo-soluciones">Nuestras soluciones</h2>
+    <p class="lema">Hoy son dos.</p>
+  </section>
+
+  <article class="solucion" id="webs" aria-labelledby="titulo-webs">
+    <div class="contenedor solucion-in">
+      <div class="solucion-texto">
+        <div class="solucion-marca">
+          <LogoWebs class="solucion-logo" />
+          <span>Valeny Webs</span>
+        </div>
+        <h3 id="titulo-webs">Webs para restaurantes</h3>
+        <p>Cada restaurante recibe un sitio con su propio diseño y su propio dominio: menú digital, código QR para las mesas, pedido para recoger y solicitud de reservación por WhatsApp.</p>
+        <a class="btn" href="/webs">Ver planes</a>
+      </div>
+      <DemoTelefono />
+    </div>
+  </article>
+
+  <article class="solucion solucion--lila" id="licencias" aria-labelledby="titulo-licencias">
+    <div class="contenedor solucion-in solucion-in--invertida">
+      <div class="solucion-texto">
+        <div class="solucion-marca">
+          <Image class="solucion-logo solucion-logo--store" src={logoStore} alt="Logotipo de Valeny Store" width={96} loading="lazy" />
+          <span>{valeny.tienda.nombre}</span>
+        </div>
+        <h3 id="titulo-licencias">Licencias de Microsoft</h3>
+        <p>Licencias de software de Microsoft para personas y negocios. Se compran en {valeny.tienda.nombre}, nuestra tienda en línea.</p>
+        <a class="btn" href={valeny.tienda.url}>Ir a {valeny.tienda.nombre}</a>
+        <p class="marca-registrada">Microsoft es una marca registrada de Microsoft Corporation. {valeny.tienda.nombre} no está afiliada a Microsoft.</p>
+      </div>
+      <DemoLicencia />
+    </div>
+  </article>
 
   <section class="contacto seccion" aria-labelledby="titulo-contacto">
     <div class="contenedor contacto-in">
-      <h2 id="titulo-contacto">¿Tienes un restaurante?</h2>
+      <h2 id="titulo-contacto">¿Hablamos?</h2>
       <p>Cuéntanos qué necesitas y te respondemos por WhatsApp.</p>
       <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
       <a href={`mailto:${valeny.correo}`}>{valeny.correo}</a>
     </div>
   </section>
 </Base>
+
+<script>
+  import "../scripts/enVista.ts";
+</script>

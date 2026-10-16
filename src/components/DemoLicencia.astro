@@ -1,0 +1,136 @@
+---
+// Ilustración de una licencia: la clave se completa grupo por grupo y queda activada.
+// Es genérica a propósito: no muestra claves reales ni logotipos de terceros. Se anima una sola vez, al entrar en pantalla.
+---
+<figure class="demo licencia-demo" data-en-vista>
+  <div class="licencia" aria-hidden="true">
+    <div class="lic-cab">
+      <span class="lic-tit">Licencia</span>
+      <span class="lic-estado">
+        <span class="est-a">Activando…</span>
+        <span class="est-b">Activada</span>
+      </span>
+    </div>
+    <div class="lic-clave">
+      <i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i>
+    </div>
+    <div class="lic-pie">
+      <span class="b w2"></span>
+      <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10.5" stroke-width="2" />
+        <path d="M7 12.5l3.2 3.2L17 8.8" />
+      </svg>
+    </div>
+  </div>
+  <figcaption>Eliges tu licencia y la activas: así de directo.</figcaption>
+</figure>
+
+<style>
+  .licencia-demo {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+  }
+  .licencia-demo figcaption {
+    max-width: 18rem;
+    color: var(--gris);
+    font-size: var(--t-sm);
+  }
+  .licencia {
+    width: min(21rem, 86vw);
+    display: grid;
+    gap: 1.4rem;
+    padding: 1.4rem;
+    border: 3px solid var(--violeta);
+    border-radius: 1rem;
+    background: #fff;
+  }
+  .lic-cab {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
+  }
+  .lic-tit {
+    letter-spacing: -0.01em;
+  }
+  .lic-estado {
+    display: grid;
+    justify-items: end;
+    color: var(--violeta);
+  }
+  .lic-estado > span {
+    grid-area: 1 / 1;
+  }
+  .est-a {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .lic-clave {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.4rem;
+  }
+  .g {
+    display: block;
+    height: 2.1rem;
+    border-radius: 0.35rem;
+    background: var(--violeta);
+  }
+  .lic-pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .lic-pie .b {
+    display: block;
+    height: 0.5rem;
+    border-radius: 99px;
+    background: var(--linea);
+  }
+  .w2 { width: 55%; }
+  .check {
+    width: 2.2rem;
+    height: 2.2rem;
+    color: var(--violeta);
+  }
+
+  /* Estado inicial (con JavaScript y movimiento permitido): clave vacía, activando. */
+  .listo .licencia { border-color: var(--tinta); }
+  .listo .g { background: var(--lila); }
+  .listo .check { opacity: 0; transform: scale(0.6); }
+  .listo .est-a { opacity: 1; visibility: visible; }
+  .listo .est-b { opacity: 0; visibility: hidden; }
+
+  /* Una sola vez: cinco grupos se llenan y, al terminar, se activa. */
+  .corre .g { animation: llenar 0.3s forwards; }
+  .corre .g:nth-child(1) { animation-delay: 0.3s; }
+  .corre .g:nth-child(2) { animation-delay: 0.7s; }
+  .corre .g:nth-child(3) { animation-delay: 1.1s; }
+  .corre .g:nth-child(4) { animation-delay: 1.5s; }
+  .corre .g:nth-child(5) { animation-delay: 1.9s; }
+  .corre .licencia { animation: borde 0.01s 2.5s forwards; }
+  .corre .check { animation: aparece 0.45s 2.5s forwards; }
+  .corre .est-a { animation: sale 0.01s 2.5s forwards; }
+  .corre .est-b { animation: entra 0.01s 2.5s forwards; }
+  @keyframes llenar {
+    from { background: var(--lila); }
+    to { background: var(--violeta); }
+  }
+  @keyframes borde {
+    to { border-color: var(--violeta); }
+  }
+  @keyframes aparece {
+    from { opacity: 0; transform: scale(0.6); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes sale {
+    to { opacity: 0; visibility: hidden; }
+  }
+  @keyframes entra {
+    to { opacity: 1; visibility: visible; }
+  }
+</style>
