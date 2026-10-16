@@ -11,13 +11,13 @@ Objetivo único: que el visitante escriba por WhatsApp.
 - **Este repositorio no contiene datos de clientes.** Nada de teléfonos, reseñas, fotos ni menús de restaurantes. Si algún día se muestra un caso, solo con permiso escrito del cliente.
 - **Sin inventar:** ni testimonios, ni cifras de clientes, ni años de experiencia, ni portafolio sin permiso.
 - **Microsoft:** sin logotipos y sin frases de alianza o distribución oficial. Valeny Store es un revendedor independiente (el aviso está en el pie). No afirmar "originales" ni "autorizadas" sin respaldo.
-- **Seguridad:** solo afirmaciones verificables. Hoy: el sitio no usa cookies, rastreadores, formularios ni fuentes de terceros. Si eso cambia, se actualiza la página de privacidad y la sección "Seguridad, sin adornos".
+- **Seguridad:** solo afirmaciones verificables. Hoy: el sitio no usa cookies, rastreadores, formularios ni fuentes de terceros. Si eso cambia, se actualiza la página de privacidad.
 - Toda la UI en español de México. Cada dependencia nueva se justifica.
 
 ## Dirección de diseño: "Papel"
 - Paleta (en `src/styles/global.css`): papel `#f7f6fb`, tinta `#16121f`, violeta `#5b2bd9`, lila `#e9e3fb`, gris `#655f78`. Violeta plano, **sin degradados**.
 - Una sola familia: Bricolage Grotesque (autoalojada con Fontsource).
-- Un solo movimiento: el relleno violeta de las filas de soluciones. Respeta `prefers-reduced-motion`.
+- Movimiento: la ilustración del teléfono de la portada (QR, menú, mensaje) se anima **una sola vez** al cargar, y el relleno violeta de las filas de soluciones responde al cursor. Todo respeta `prefers-reduced-motion`. La ilustración es genérica a propósito: no muestra ningún restaurante real.
 - Escala de 5 tamaños. Sin tarjetas iguales, sin mayúsculas decorativas, sin iconos de adorno.
 - Antes de cambiar el diseño, cargar la skill `frontend-design` y revisar la lista anti-slop del CLAUDE.md de `design`.
 

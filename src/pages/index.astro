@@ -1,12 +1,16 @@
 ---
 import Base from "../layouts/Base.astro";
+import DemoTelefono from "../components/DemoTelefono.astro";
 import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
 ---
 <Base>
   <section class="contenedor portada" aria-labelledby="titulo-portada">
-    <h1 id="titulo-portada">Webs para restaurantes. Licencias de Microsoft.</h1>
-    <p class="lema">Valeny reúne soluciones de tecnología para negocios. Hoy son dos.</p>
-    <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
+    <div class="portada-texto">
+      <h1 id="titulo-portada">Lo digital de tu negocio, resuelto por WhatsApp.</h1>
+      <p class="lema">Webs para restaurantes y licencias de Microsoft. Hablas con una persona, no con un formulario.</p>
+      <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
+    </div>
+    <DemoTelefono />
   </section>
 
   <section class="soluciones" aria-labelledby="titulo-soluciones">
@@ -25,26 +29,6 @@ import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
           <span class="fila-accion">Ir a {valeny.tienda.nombre}</span>
         </span>
     </a>
-  </section>
-
-  <section class="seccion contenedor seguridad" aria-labelledby="titulo-seguridad">
-    <div class="seguridad-in">
-      <h2 id="titulo-seguridad">Seguridad, sin adornos.</h2>
-      <dl class="hechos">
-        <div>
-          <dt>Sin cookies ni rastreadores</dt>
-          <dd>Este sitio no los usa. No hay formularios ni cuentas.</dd>
-        </div>
-        <div>
-          <dt>Sin base de datos</dt>
-          <dd>Los sitios de restaurantes son páginas estáticas: no guardan datos de tus clientes, así que no hay nada que filtrar.</dd>
-        </div>
-        <div>
-          <dt>Los pedidos no pasan por nosotros</dt>
-          <dd>El cliente arma su pedido o su reservación en su teléfono y la envía a tu WhatsApp. Valeny no la recibe ni la guarda.</dd>
-        </div>
-      </dl>
-    </div>
   </section>
 
   <section class="contacto seccion" aria-labelledby="titulo-contacto">
