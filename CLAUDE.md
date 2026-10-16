@@ -17,7 +17,7 @@ Objetivo único: que el visitante escriba por WhatsApp.
 ## Dirección de diseño: "Papel"
 - Paleta (en `src/styles/global.css`): papel `#f7f6fb`, tinta `#16121f`, violeta `#5b2bd9`, lila `#e9e3fb`, gris `#655f78`. Violeta plano, **sin degradados**.
 - Una sola familia: Bricolage Grotesque (autoalojada con Fontsource).
-- Movimiento: la V de la portada se dibuja una vez al cargar; la ilustración del teléfono (Webs) y la de la licencia (Licencias) se animan **una sola vez**, al entrar en pantalla (`src/scripts/enVista.ts`). Todo respeta `prefers-reduced-motion` y se queda en el estado final. Las ilustraciones son genéricas a propósito: no muestran restaurantes reales, claves reales ni logotipos de terceros.
+- Movimiento: la V de la portada se dibuja una vez al cargar. La ilustración del teléfono (Webs) corre en ciclo de 11 s **solo mientras está a la vista** (QR con barrido, menú con toque, mensaje enviado) y se detiene al salir; la de la licencia (Licencias) corre una vez al entrar en pantalla (`src/scripts/enVista.ts`, `data-repite` para las cíclicas). Todo respeta `prefers-reduced-motion` y se queda en el estado final. Las ilustraciones son genéricas a propósito: no muestran restaurantes reales, claves reales ni logotipos de terceros.
 - Escala de 5 tamaños. Sin tarjetas iguales, sin mayúsculas decorativas, sin iconos de adorno.
 - Antes de cambiar el diseño, cargar la skill `frontend-design` y revisar la lista anti-slop del CLAUDE.md de `design`.
 

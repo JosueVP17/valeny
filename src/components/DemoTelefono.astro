@@ -1,30 +1,40 @@
 ---
-// Ilustración del flujo de un sitio de restaurante: escaneas el QR, ves el menú, mandas el pedido por WhatsApp.
-// Es genérica a propósito: no muestra ningún restaurante real. Se anima una sola vez, cuando entra en pantalla.
+// Ilustración del flujo de un sitio de restaurante: escaneas el QR, armas el pedido, se envía por WhatsApp.
+// Es genérica a propósito: no muestra ningún restaurante real. Corre mientras el bloque está en pantalla
+// y se detiene al salir. Con movimiento reducido (o sin JavaScript) se queda en el último paso.
 ---
-<figure class="demo" data-en-vista>
+<figure class="demo" data-en-vista data-repite>
   <div class="telefono" aria-hidden="true">
     <div class="pantalla">
+      <!-- 1. Escaneas el QR -->
       <div class="escena e1">
-        <svg viewBox="0 0 21 21" shape-rendering="crispEdges" class="qr">
-          <path fill-rule="evenodd" d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM14 0h7v7h-7zM15 1v5h5V1zM16 2h3v3h-3zM0 14h7v7H0zM1 15v5h5v-5zM2 16h3v3H2z" />
-          <path d="M9 0h2v2H9zM11 2h2v2h-2zM8 4h2v2H8zM12 5h1v3h-1zM9 8h3v1H9zM0 8h2v2H0zM3 9h3v2H3zM7 9h1v3H7zM13 9h2v2h-2zM16 8h2v1h-2zM19 9h2v3h-2zM9 11h2v2H9zM12 12h3v1h-3zM16 11h1v3h-1zM18 13h3v1h-3zM9 14h1v3H9zM11 15h3v2h-3zM15 15h2v1h-2zM18 16h1v3h-1zM10 18h3v1h-3zM14 18h2v3h-2zM9 20h3v1H9zM17 20h4v1h-4z" />
-        </svg>
+        <div class="qr-caja">
+          <svg viewBox="0 0 21 21" shape-rendering="crispEdges" class="qr">
+            <path fill-rule="evenodd" d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM14 0h7v7h-7zM15 1v5h5V1zM16 2h3v3h-3zM0 14h7v7H0zM1 15v5h5v-5zM2 16h3v3H2z" />
+            <path d="M9 0h2v2H9zM11 2h2v2h-2zM8 4h2v2H8zM12 5h1v3h-1zM9 8h3v1H9zM0 8h2v2H0zM3 9h3v2H3zM7 9h1v3H7zM13 9h2v2h-2zM16 8h2v1h-2zM19 9h2v3h-2zM9 11h2v2H9zM12 12h3v1h-3zM16 11h1v3h-1zM18 13h3v1h-3zM9 14h1v3H9zM11 15h3v2h-3zM15 15h2v1h-2zM18 16h1v3h-1zM10 18h3v1h-3zM14 18h2v3h-2zM9 20h3v1H9zM17 20h4v1h-4z" />
+          </svg>
+          <i class="escaneo"></i>
+          <span class="listo-ok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l4 4L18 8" /></svg>
+          </span>
+        </div>
         <p>Escaneas el QR de la mesa</p>
       </div>
 
+      <!-- 2. Armas tu pedido -->
       <div class="escena e2">
         <p class="t">Menú</p>
         <ul class="lista">
-          <li><span class="b w1"></span><span class="p"></span></li>
-          <li><span class="b w2"></span><span class="p"></span></li>
-          <li class="sel"><span class="b w3"></span><span class="p"></span></li>
-          <li><span class="b w1"></span><span class="p"></span></li>
+          <li class="i1"><span class="b w1"></span><span class="p"></span></li>
+          <li class="i2"><span class="b w2"></span><span class="p"></span></li>
+          <li class="i3 sel"><span class="b w3"></span><span class="p"></span><i class="toque"></i></li>
+          <li class="i4"><span class="b w1"></span><span class="p"></span></li>
         </ul>
-        <div class="barra">Ver pedido</div>
+        <div class="barra">Ver pedido <span class="n">1</span></div>
         <p>Armas tu pedido</p>
       </div>
 
+      <!-- 3. Se envía por WhatsApp -->
       <div class="escena e3">
         <p class="t">Mensaje listo</p>
         <div class="burbuja">
@@ -32,13 +42,17 @@
           <i class="b w2"></i>
           <i class="b w3"></i>
           <span>Entrega: Para recoger</span>
+          <span class="enviado">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12.5l4 4L14 8M10 15.5l1.5 1.5L20 8" /></svg>
+            Enviado
+          </span>
         </div>
         <p>Lo envías a tu WhatsApp</p>
       </div>
     </div>
     <div class="puntos"><i></i><i></i><i></i></div>
   </div>
-  <figcaption>Así funciona un sitio de restaurante de Valeny: escaneas el QR, ves el menú y mandas tu pedido por WhatsApp.</figcaption>
+  <figcaption>Así funciona un sitio de restaurante de Valeny: escaneas el QR, armas tu pedido y lo mandas por WhatsApp.</figcaption>
 </figure>
 
 <style>
@@ -48,7 +62,7 @@
     justify-items: start;
   }
   .demo figcaption {
-    max-width: 16rem;
+    max-width: 17rem;
     color: var(--gris);
     font-size: var(--t-sm);
   }
@@ -91,19 +105,65 @@
     font-weight: 700;
     letter-spacing: -0.02em;
   }
+  /* Estado final (sin animación): último paso. */
   .e3 {
     opacity: 1;
     visibility: visible;
   }
+  .puntos {
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+    padding-bottom: 0.15rem;
+  }
+  .puntos i {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--linea);
+  }
+  .puntos i:nth-child(3) {
+    background: var(--violeta);
+  }
 
-  .qr {
+  /* --- Paso 1: QR con barrido de escaneo --- */
+  .qr-caja {
+    position: relative;
     width: 62%;
     padding: 0.55rem;
     background: #fff;
     border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  .qr {
+    display: block;
+    width: 100%;
     fill: var(--tinta);
   }
+  .escaneo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 0.2rem;
+    background: var(--violeta);
+    box-shadow: 0 0 0 0.12rem rgb(91 43 217 / 0.18);
+    opacity: 0;
+  }
+  .listo-ok {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgb(91 43 217 / 0.92);
+    color: #fff;
+    opacity: 0;
+  }
+  .listo-ok svg {
+    width: 46%;
+  }
 
+  /* --- Paso 2: menú --- */
   .lista {
     width: 100%;
     display: grid;
@@ -113,6 +173,8 @@
     margin: 0;
   }
   .lista li {
+    position: relative;
+    overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -124,6 +186,17 @@
   }
   .lista .sel {
     border-color: var(--violeta);
+  }
+  .toque {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: -1.2rem -1.2rem 0 0;
+    border-radius: 50%;
+    background: var(--violeta);
+    opacity: 0;
   }
   .b {
     display: block;
@@ -142,6 +215,10 @@
     background: var(--violeta);
   }
   .barra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     width: 100%;
     padding: 0.55rem;
     border-radius: 0.4rem;
@@ -149,6 +226,18 @@
     color: #fff;
     font-weight: 700;
   }
+  .barra .n {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 99px;
+    background: #fff;
+    color: var(--violeta);
+    font-size: 0.75rem;
+  }
+
+  /* --- Paso 3: mensaje --- */
   .burbuja {
     width: 100%;
     display: grid;
@@ -162,60 +251,135 @@
   .burbuja i {
     height: 0.5rem;
   }
-
-  .puntos {
-    display: flex;
-    justify-content: center;
-    gap: 0.35rem;
-    padding-bottom: 0.15rem;
+  .enviado {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--violeta);
+    font-size: 0.75rem;
   }
-  .puntos i {
-    width: 0.45rem;
-    height: 0.45rem;
-    border-radius: 50%;
-    background: var(--linea);
-  }
-  .puntos i:nth-child(3) {
-    background: var(--violeta);
+  .enviado svg {
+    width: 1rem;
+    height: 1rem;
   }
 
-  /* Estado inicial (solo cuando hay JavaScript y movimiento permitido): arranca en el QR. */
+  /* Antes de entrar en pantalla (con JavaScript y movimiento permitido): se ve el QR. */
   .listo .e1 { opacity: 1; visibility: visible; }
   .listo .e3 { opacity: 0; visibility: hidden; }
   .listo .puntos i:nth-child(1) { background: var(--violeta); }
   .listo .puntos i:nth-child(3) { background: var(--linea); }
 
-  /* Una sola vez, al entrar en pantalla. Termina en el último paso. */
-  .corre .e1 { animation: escena1 6.2s 0.2s forwards; }
-  .corre .e2 { animation: escena2 6.2s 0.2s forwards; }
-  .corre .e3 { animation: escena3 6.2s 0.2s forwards; }
-  .corre .puntos i:nth-child(1) { animation: punto1 6.2s 0.2s forwards; }
-  .corre .puntos i:nth-child(2) { animation: punto2 6.2s 0.2s forwards; }
-  .corre .puntos i:nth-child(3) { animation: punto3 6.2s 0.2s forwards; }
-  @keyframes escena1 {
-    0%, 33% { opacity: 1; visibility: visible; }
-    39%, 100% { opacity: 0; visibility: hidden; }
+  /* Ciclo de 11 s mientras el bloque está a la vista. */
+  .corre .e1 { animation: e1 11s linear infinite; }
+  .corre .e2 { animation: e2 11s linear infinite; }
+  .corre .e3 { animation: e3 11s linear infinite; }
+  .corre .escaneo { animation: barrido 11s linear infinite; }
+  .corre .listo-ok { animation: okqr 11s linear infinite; }
+  .corre .i1 { animation: item1 11s ease-out infinite; }
+  .corre .i2 { animation: item2 11s ease-out infinite; }
+  .corre .i3 { animation: item3 11s ease-out infinite, seleccion 11s linear infinite; }
+  .corre .i4 { animation: item4 11s ease-out infinite; }
+  .corre .toque { animation: toque 11s ease-out infinite; }
+  .corre .barra { animation: barra 11s ease-out infinite; }
+  .corre .barra .n { animation: badge 11s ease-out infinite; }
+  .corre .burbuja { animation: burbuja 11s ease-out infinite; }
+  .corre .burbuja .w2 { animation: crece2 11s ease-out infinite; }
+  .corre .burbuja .w3 { animation: crece3 11s ease-out infinite; }
+  .corre .enviado { animation: enviado 11s ease-out infinite; }
+  .corre .puntos i:nth-child(1) { animation: punto1 11s linear infinite; }
+  .corre .puntos i:nth-child(2) { animation: punto2 11s linear infinite; }
+  .corre .puntos i:nth-child(3) { animation: punto3 11s linear infinite; }
+
+  @keyframes e1 {
+    0% { opacity: 0; visibility: visible; }
+    3%, 28% { opacity: 1; visibility: visible; }
+    31%, 100% { opacity: 0; visibility: hidden; }
   }
-  @keyframes escena2 {
-    0%, 33% { opacity: 0; visibility: hidden; }
-    39%, 66% { opacity: 1; visibility: visible; }
-    72%, 100% { opacity: 0; visibility: hidden; }
+  @keyframes e2 {
+    0%, 29% { opacity: 0; visibility: hidden; }
+    32%, 62% { opacity: 1; visibility: visible; }
+    65%, 100% { opacity: 0; visibility: hidden; }
   }
-  @keyframes escena3 {
-    0%, 66% { opacity: 0; visibility: hidden; }
-    72%, 100% { opacity: 1; visibility: visible; }
+  @keyframes e3 {
+    0%, 63% { opacity: 0; visibility: hidden; }
+    66%, 94% { opacity: 1; visibility: visible; }
+    98%, 100% { opacity: 0; visibility: hidden; }
+  }
+  @keyframes barrido {
+    0%, 4% { top: 0; opacity: 0; }
+    5% { top: 0; opacity: 1; }
+    19% { top: calc(100% - 0.2rem); opacity: 1; }
+    20%, 100% { top: calc(100% - 0.2rem); opacity: 0; }
+  }
+  @keyframes okqr {
+    0%, 20% { opacity: 0; }
+    23%, 27% { opacity: 1; }
+    29%, 100% { opacity: 0; }
+  }
+  @keyframes item1 {
+    0%, 32% { opacity: 0; transform: translateY(0.6rem); }
+    35%, 100% { opacity: 1; transform: none; }
+  }
+  @keyframes item2 {
+    0%, 34% { opacity: 0; transform: translateY(0.6rem); }
+    37%, 100% { opacity: 1; transform: none; }
+  }
+  @keyframes item3 {
+    0%, 36% { opacity: 0; transform: translateY(0.6rem); }
+    39%, 100% { opacity: 1; transform: none; }
+  }
+  @keyframes item4 {
+    0%, 38% { opacity: 0; transform: translateY(0.6rem); }
+    41%, 100% { opacity: 1; transform: none; }
+  }
+  @keyframes seleccion {
+    0%, 45% { border-color: transparent; }
+    46%, 100% { border-color: var(--violeta); }
+  }
+  @keyframes toque {
+    0%, 44% { opacity: 0; transform: scale(0.2); }
+    45% { opacity: 0.45; transform: scale(0.5); }
+    50%, 100% { opacity: 0; transform: scale(1.9); }
+  }
+  @keyframes barra {
+    0%, 55% { transform: none; }
+    57% { transform: scale(0.95); }
+    59%, 100% { transform: none; }
+  }
+  @keyframes badge {
+    0%, 47% { transform: scale(0); }
+    50% { transform: scale(1.35); }
+    52%, 100% { transform: scale(1); }
+  }
+  @keyframes burbuja {
+    0%, 66% { opacity: 0; transform: translateY(0.8rem); }
+    69%, 100% { opacity: 1; transform: none; }
+  }
+  @keyframes crece2 {
+    0%, 70% { width: 0; }
+    76%, 100% { width: 70%; }
+  }
+  @keyframes crece3 {
+    0%, 75% { width: 0; }
+    80%, 100% { width: 42%; }
+  }
+  @keyframes enviado {
+    0%, 82% { opacity: 0; transform: scale(0.6); }
+    86%, 100% { opacity: 1; transform: none; }
   }
   @keyframes punto1 {
-    0%, 33% { background: var(--violeta); }
-    39%, 100% { background: var(--linea); }
+    0%, 30% { background: var(--violeta); }
+    33%, 100% { background: var(--linea); }
   }
   @keyframes punto2 {
-    0%, 33% { background: var(--linea); }
-    39%, 66% { background: var(--violeta); }
-    72%, 100% { background: var(--linea); }
+    0%, 30% { background: var(--linea); }
+    33%, 63% { background: var(--violeta); }
+    66%, 100% { background: var(--linea); }
   }
   @keyframes punto3 {
-    0%, 66% { background: var(--linea); }
-    72%, 100% { background: var(--violeta); }
+    0%, 63% { background: var(--linea); }
+    66%, 96% { background: var(--violeta); }
+    99%, 100% { background: var(--linea); }
   }
 </style>
