@@ -691,3 +691,14 @@ h3 {
   align-items: center;
   min-height: 44px;
 }
+
+.portada-cta {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+.cta-nota {
+  max-width: 24rem;
+  color: var(--gris);
+  font-size: var(--t-sm);
+}

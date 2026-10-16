@@ -11,9 +11,12 @@ import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
 <Base>
   <section class="contenedor portada" aria-labelledby="titulo-portada">
     <div class="portada-texto">
-      <h1 id="titulo-portada">Lo digital de tu negocio, resuelto por WhatsApp.</h1>
-      <p class="lema">Valeny es una empresa de tecnología que crea soluciones para negocios. Hablas con una persona, no con un formulario.</p>
-      <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
+      <h1 id="titulo-portada">Soluciones de tecnología para tu negocio.</h1>
+      <p class="lema">Valeny es una empresa de tecnología. Hoy hacemos webs para restaurantes y ofrecemos licencias de software de Microsoft.</p>
+      <div class="portada-cta">
+        <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
+        <p class="cta-nota">Para cotizar o resolver dudas. Te respondemos por mensaje.</p>
+      </div>
     </div>
     <div class="portada-arte">
       <HeroArte />
@@ -28,7 +31,7 @@ import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
         <dl class="principios">
           <div>
             <dt>Simple</dt>
-            <dd>Empiezas con un mensaje de WhatsApp. Sin formularios ni trámites largos.</dd>
+            <dd>Nos escribes por WhatsApp y platicamos de lo que necesitas. Sin formularios ni trámites largos.</dd>
           </div>
           <div>
             <dt>Seguro</dt>
