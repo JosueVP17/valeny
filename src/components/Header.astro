@@ -1,0 +1,18 @@
+---
+import Logo from "./Logo.astro";
+import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
+
+const ruta = Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/+$/, "") : "/";
+---
+<header class="cabecera">
+  <div class="contenedor cabecera-in">
+    <a class="logo" href="/" aria-label="Valeny, inicio">
+      <Logo />
+    </a>
+    <nav aria-label="Principal">
+      <a href="/webs" aria-current={ruta === "/webs" ? "page" : undefined}>Webs</a>
+      <a class="solo-ancho" href={valeny.tienda.url}>Licencias</a>
+      <a class="btn btn--chico" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escríbenos</a>
+    </nav>
+  </div>
+</header>

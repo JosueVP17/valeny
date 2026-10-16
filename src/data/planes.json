@@ -1,0 +1,55 @@
+{
+  "moneda": "MXN",
+  "mensualidadIncluye": [
+    "Alojamiento del sitio",
+    "Mantenimiento",
+    "Soporte por WhatsApp",
+    "2 cambios de menú al mes"
+  ],
+  "noIncluye": [
+    "El dominio de tu restaurante (se registra a tu nombre y se paga aparte)",
+    "Fotos profesionales ni redacción de textos"
+  ],
+  "planes": [
+    {
+      "id": "menu",
+      "nombre": "Menú",
+      "resumen": "Tu restaurante en internet, con el menú a un escaneo de distancia.",
+      "unico": 2500,
+      "mensual": 250,
+      "incluye": [
+        "Sitio con diseño propio para tu restaurante",
+        "Menú digital con precios y variantes",
+        "Código QR para las mesas",
+        "Horario, mapa, teléfono y redes",
+        "Aparece en Google y se ve bien al compartirlo por WhatsApp"
+      ]
+    },
+    {
+      "id": "pedidos",
+      "nombre": "Pedidos",
+      "recomendado": true,
+      "resumen": "Todo lo del plan Menú, y tus clientes ya pueden pedir y reservar.",
+      "unico": 4500,
+      "mensual": 400,
+      "incluye": [
+        "Todo lo del plan Menú",
+        "Pedido para recoger: el cliente arma su pedido y lo envía a tu WhatsApp",
+        "Solicitud de reservación por WhatsApp, con día, hora y personas",
+        "Reseñas reales de Google en tu sitio"
+      ]
+    },
+    {
+      "id": "pro",
+      "nombre": "Pro",
+      "enDesarrollo": true,
+      "resumen": "Lo que sigue. Todavía no está a la venta.",
+      "incluye": [
+        "Panel para editar tu menú tú mismo",
+        "Reservaciones con disponibilidad real",
+        "Pagos en línea",
+        "Varias sucursales"
+      ]
+    }
+  ]
+}

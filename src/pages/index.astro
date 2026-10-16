@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
+---
+<Base>
+  <section class="contenedor portada" aria-labelledby="titulo-portada">
+    <h1 id="titulo-portada">Webs para restaurantes. Licencias de Microsoft.</h1>
+    <p class="lema">Valeny reúne soluciones de tecnología para negocios. Hoy son dos.</p>
+    <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
+  </section>
+
+  <section class="soluciones" aria-labelledby="titulo-soluciones">
+    <h2 id="titulo-soluciones" class="solo-lectores">Soluciones</h2>
+    <a class="fila" href="/webs">
+        <span class="contenedor fila-in">
+          <span class="fila-titulo">Webs para restaurantes</span>
+          <span class="fila-texto">Menú digital, código QR para las mesas, pedido para recoger y reservaciones por WhatsApp. Cada restaurante, con su propio diseño y su propio dominio.</span>
+          <span class="fila-accion">Ver planes</span>
+        </span>
+    </a>
+    <a class="fila" href={valeny.tienda.url}>
+        <span class="contenedor fila-in">
+          <span class="fila-titulo">Licencias de Microsoft</span>
+          <span class="fila-texto">Licencias de software de Microsoft para personas y negocios, a la venta en {valeny.tienda.nombre}.</span>
+          <span class="fila-accion">Ir a {valeny.tienda.nombre}</span>
+        </span>
+    </a>
+  </section>
+
+  <section class="seccion contenedor seguridad" aria-labelledby="titulo-seguridad">
+    <div class="seguridad-in">
+      <h2 id="titulo-seguridad">Seguridad, sin adornos.</h2>
+      <dl class="hechos">
+        <div>
+          <dt>Sin cookies ni rastreadores</dt>
+          <dd>Este sitio no los usa. No hay formularios ni cuentas.</dd>
+        </div>
+        <div>
+          <dt>Sin base de datos</dt>
+          <dd>Los sitios de restaurantes son páginas estáticas: no guardan datos de tus clientes, así que no hay nada que filtrar.</dd>
+        </div>
+        <div>
+          <dt>Los pedidos no pasan por nosotros</dt>
+          <dd>El cliente arma su pedido o su reservación en su teléfono y la envía a tu WhatsApp. Valeny no la recibe ni la guarda.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="contacto seccion" aria-labelledby="titulo-contacto">
+    <div class="contenedor contacto-in">
+      <h2 id="titulo-contacto">¿Tienes un restaurante?</h2>
+      <p>Cuéntanos qué necesitas y te respondemos por WhatsApp.</p>
+      <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
+      <a href={`mailto:${valeny.correo}`}>{valeny.correo}</a>
+    </div>
+  </section>
+</Base>

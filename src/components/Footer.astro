@@ -1,0 +1,25 @@
+---
+import Logo from "./Logo.astro";
+import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
+const anio = new Date().getFullYear();
+---
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-in">
+      <a class="logo" href="/" aria-label="Valeny, inicio">
+        <Logo />
+      </a>
+      <nav aria-label="Pie de página">
+        <a href="/webs">Webs para restaurantes</a>
+        <a href={valeny.tienda.url}>{valeny.tienda.nombre}</a>
+        <a href="/privacidad">Privacidad</a>
+        <a href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">WhatsApp {valeny.telefono}</a>
+        <a href={`mailto:${valeny.correo}`}>{valeny.correo}</a>
+      </nav>
+      <p>© {anio} Valeny</p>
+    </div>
+    <p class="pie-nota">
+      {valeny.tienda.nombre} es un revendedor independiente de licencias. Microsoft es una marca registrada de Microsoft Corporation; Valeny no está afiliado a Microsoft.
+    </p>
+  </div>
+</footer>

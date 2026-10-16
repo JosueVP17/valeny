@@ -1,0 +1,114 @@
+---
+import Base from "../layouts/Base.astro";
+import { catalogo, pesos, urlWhatsApp, mensajePlan, MENSAJES } from "../data/index.ts";
+
+const titulo = "Webs para restaurantes en todo México | Valeny";
+const descripcion = "Sitio con diseño propio para tu restaurante: menú digital, QR de mesas, pedido para recoger y reservaciones por WhatsApp. Planes y precios.";
+---
+<Base titulo={titulo} descripcion={descripcion}>
+  <section class="contenedor encabezado" aria-labelledby="titulo-webs">
+    <h1 id="titulo-webs">Webs para restaurantes</h1>
+    <p class="lema">Un sitio hecho para tu restaurante, con tu menú, tu horario y tu dominio. Tus clientes piden y reservan por WhatsApp.</p>
+    <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Cotizar por WhatsApp</a>
+  </section>
+
+  <section class="planes" aria-labelledby="titulo-planes">
+    <h2 id="titulo-planes" class="solo-lectores">Planes</h2>
+    <div class="contenedor">
+      {catalogo.planes.map((p) => (
+        <article class:list={["plan", { "plan--pro": "enDesarrollo" in p && p.enDesarrollo }]}>
+          <div class="plan-cab">
+            <h3 class="plan-nombre">
+              {p.nombre}
+              {"recomendado" in p && p.recomendado && <span class="plan-etiqueta">Recomendado</span>}
+              {"enDesarrollo" in p && p.enDesarrollo && <span class="plan-etiqueta">En desarrollo</span>}
+            </h3>
+            <p class="plan-resumen">{p.resumen}</p>
+            {"unico" in p && "mensual" in p && (
+              <p class="plan-precio">
+                <strong>{pesos(p.unico)}</strong>
+                <span>pago único, más {pesos(p.mensual)} al mes. Precios en pesos mexicanos.</span>
+              </p>
+            )}
+          </div>
+          <div>
+            <ul class="plan-lista">
+              {p.incluye.map((i) => <li>{i}</li>)}
+            </ul>
+            {"enDesarrollo" in p && p.enDesarrollo ? (
+              <a class="btn btn--borde" href={urlWhatsApp(MENSAJES.listaEspera)} rel="noopener" target="_blank">Avisarme cuando esté listo</a>
+            ) : (
+              <a class="btn" href={urlWhatsApp(mensajePlan(p.nombre))} rel="noopener" target="_blank">Quiero el plan {p.nombre}</a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="contenedor seccion" aria-labelledby="titulo-mensualidad">
+    <h2 id="titulo-mensualidad" class="solo-lectores">Qué incluye la mensualidad y qué no</h2>
+    <div class="condiciones">
+      <div>
+        <h3>La mensualidad incluye</h3>
+        <ul>
+          {catalogo.mensualidadIncluye.map((i) => <li>{i}</li>)}
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No incluye</h3>
+        <ul>
+          {catalogo.noIncluye.map((i) => <li>{i}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contenedor seccion" aria-labelledby="titulo-pasos" style="padding-top:0">
+    <h2 id="titulo-pasos" class="bloque-titulo">Cómo trabajamos</h2>
+    <ol class="pasos">
+      <li>
+        <div><strong>Platicamos por WhatsApp</strong><span>Nos cuentas de tu restaurante y elegimos el plan.</span></div>
+      </li>
+      <li>
+        <div><strong>Nos mandas tu material</strong><span>Menú con precios, horario, dirección y las fotos que tengas.</span></div>
+      </li>
+      <li>
+        <div><strong>Te proponemos el diseño</strong><span>Dos o tres direcciones pensadas para tu restaurante. Tú eliges una.</span></div>
+      </li>
+      <li>
+        <div><strong>Publicamos tu sitio</strong><span>En tu propio dominio, con el código QR listo para imprimir.</span></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="contenedor seccion" aria-labelledby="titulo-preguntas" style="padding-top:0">
+    <h2 id="titulo-preguntas" class="bloque-titulo">Preguntas</h2>
+    <div class="preguntas">
+      <details>
+        <summary>¿Necesito un dominio?</summary>
+        <p>Sí. Tu restaurante tendrá su propio dominio, por ejemplo tunegocio.mx. Se registra a tu nombre y se paga aparte, directamente al registrador.</p>
+      </details>
+      <details>
+        <summary>¿Quién actualiza el menú?</summary>
+        <p>Nosotros. Cada plan incluye 2 cambios de menú al mes que nos pides por WhatsApp. El panel para que lo edites tú mismo llegará con el plan Pro, que todavía está en desarrollo.</p>
+      </details>
+      <details>
+        <summary>¿Los pedidos pasan por Valeny?</summary>
+        <p>No. El cliente arma su pedido en su teléfono y lo envía a tu WhatsApp. Tú confirmas el total y el tiempo. Valeny no recibe ni guarda esos mensajes.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto tarda?</summary>
+        <p>Te damos una fecha al cotizar. Depende de qué tengas listo: menú, precios, fotos y horarios.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="contacto seccion" aria-labelledby="titulo-contacto">
+    <div class="contenedor contacto-in">
+      <h2 id="titulo-contacto">¿Empezamos?</h2>
+      <p>Escríbenos por WhatsApp y te decimos cuál plan te conviene.</p>
+      <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
+    </div>
+  </section>
+</Base>

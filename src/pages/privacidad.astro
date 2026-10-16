@@ -1,0 +1,39 @@
+---
+import Base from "../layouts/Base.astro";
+import { valeny } from "../data/index.ts";
+
+const titulo = "Privacidad | Valeny";
+const descripcion = "Qué datos recoge este sitio: ninguno. Qué pasa cuando nos escribes por WhatsApp o por correo.";
+---
+<Base titulo={titulo} descripcion={descripcion}>
+  <section class="contenedor encabezado" aria-labelledby="titulo-privacidad">
+    <h1 id="titulo-privacidad">Privacidad</h1>
+    <p class="lema">Este sitio no recoge datos. Aquí está lo que sí pasa cuando nos escribes.</p>
+  </section>
+
+  <section class="contenedor seccion" style="padding-top:0">
+    <div class="texto-largo">
+      <h2>Lo que este sitio no hace</h2>
+      <ul>
+        <li>No usa cookies ni rastreadores de analítica o publicidad.</li>
+        <li>No tiene formularios, cuentas ni inicio de sesión.</li>
+        <li>No carga fuentes ni scripts de terceros: todo se sirve desde el propio sitio.</li>
+      </ul>
+
+      <h2>Cuando nos escribes por WhatsApp</h2>
+      <p>Los botones de WhatsApp abren la aplicación con un mensaje ya escrito. A partir de ahí, la conversación ocurre en WhatsApp y se rige por sus condiciones y su aviso de privacidad. Usamos tu número y lo que nos cuentes solo para responderte y darte el servicio que pidas.</p>
+
+      <h2>Cuando nos escribes por correo</h2>
+      <p>Si escribes a <a href={`mailto:${valeny.correo}`}>{valeny.correo}</a>, usamos tu mensaje solo para responderte.</p>
+
+      <h2>El alojamiento</h2>
+      <p>El sitio se sirve desde Cloudflare. Para funcionar, un proveedor de alojamiento puede registrar datos técnicos básicos de cada visita, como la dirección IP. Valeny no accede a ellos para identificarte.</p>
+
+      <h2>Los sitios de restaurantes</h2>
+      <p>Los sitios que hacemos para restaurantes son páginas estáticas. Los pedidos y las solicitudes de reservación se arman en el teléfono del cliente y se envían por WhatsApp directamente al restaurante. Valeny no los recibe ni los guarda.</p>
+
+      <h2>Contacto</h2>
+      <p>Para cualquier duda sobre tus datos, escribe a <a href={`mailto:${valeny.correo}`}>{valeny.correo}</a>.</p>
+    </div>
+  </section>
+</Base>
