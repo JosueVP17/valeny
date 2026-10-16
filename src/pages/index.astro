@@ -12,7 +12,7 @@ import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
   <section class="contenedor portada" aria-labelledby="titulo-portada">
     <div class="portada-texto">
       <h1 id="titulo-portada">Soluciones de tecnología para tu negocio.</h1>
-      <p class="lema">Valeny es una empresa de tecnología. Hoy hacemos webs para restaurantes y ofrecemos licencias de software de Microsoft.</p>
+      <p class="lema">Valeny es una empresa de tecnología. Hoy hacemos webs para restaurantes y ofrecemos licencias de software.</p>
       <div class="portada-cta">
         <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Escribir por WhatsApp</a>
         <p class="cta-nota">Para cotizar o resolver dudas. Te respondemos por mensaje.</p>
@@ -73,8 +73,8 @@ import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
           <Image class="solucion-logo solucion-logo--store" src={logoStore} alt="Logotipo de Valeny Store" width={96} loading="lazy" />
           <span>{valeny.tienda.nombre}</span>
         </div>
-        <h3 id="titulo-licencias">Licencias de Microsoft</h3>
-        <p>Licencias de software de Microsoft para personas y negocios. Se compran en {valeny.tienda.nombre}, nuestra tienda en línea.</p>
+        <h3 id="titulo-licencias">Licencias de software</h3>
+        <p>En {valeny.tienda.nombre}, nuestra tienda en línea, vendemos licencias de software de Microsoft, antivirus, software de arquitectura y más, para personas y negocios.</p>
         <a class="btn" href={valeny.tienda.url}>Ir a {valeny.tienda.nombre}</a>
         <p class="marca-registrada">Microsoft es una marca registrada de Microsoft Corporation. {valeny.tienda.nombre} no está afiliada a Microsoft.</p>
       </div>

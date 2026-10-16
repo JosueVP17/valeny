@@ -3,21 +3,21 @@
 ## Qué es
 Sitio de la marca Valeny. Presenta sus soluciones y lleva a cada una. Hoy hay dos:
 1. **Webs para restaurantes** (`/webs`): página del servicio, con planes y precios. Los sitios de cada restaurante viven en su propio dominio y en otro repositorio (`E:\Valeny\design`, privado).
-2. **Licencias de Microsoft**: se venden en `valenystore.com.mx` (Valeny Store). Aquí solo se presenta y se enlaza.
+2. **Licencias de software**: se venden en `valenystore.com.mx` (Valeny Store). Aquí solo se presenta y se enlaza.
 
 Objetivo único: que el visitante escriba por WhatsApp.
 
 ## Reglas
 - **Este repositorio no contiene datos de clientes.** Nada de teléfonos, reseñas, fotos ni menús de restaurantes. Si algún día se muestra un caso, solo con permiso escrito del cliente.
 - **Sin inventar:** ni testimonios, ni cifras de clientes, ni años de experiencia, ni portafolio sin permiso.
-- **Microsoft:** sin logotipos y sin frases de alianza o distribución oficial. Valeny Store es un revendedor independiente. La nota de marca registrada y no afiliación va junto al bloque de licencias de la portada (no en el pie). No afirmar "originales" ni "autorizadas" sin respaldo.
+- **Microsoft y otras marcas:** Arriba (titular, subtítulo, metadatos) se habla de "licencias de software". Microsoft se nombra solo en la descripción del bloque de Valeny Store, junto con antivirus y software de arquitectura. Sin logotipos y sin frases de alianza o distribución oficial. Valeny Store es un revendedor independiente. La nota de marca registrada y no afiliación va junto al bloque de licencias de la portada (no en el pie). No afirmar "originales" ni "autorizadas" sin respaldo.
 - **Seguridad:** solo afirmaciones verificables. Hoy: el sitio no usa cookies, rastreadores, formularios ni fuentes de terceros. Si eso cambia, se actualiza la página de privacidad.
 - Toda la UI en español de México. Cada dependencia nueva se justifica.
 
 ## Dirección de diseño: "Papel"
 - Paleta (en `src/styles/global.css`): papel `#f7f6fb`, tinta `#16121f`, violeta `#5b2bd9`, lila `#e9e3fb`, gris `#655f78`. Violeta plano, **sin degradados**.
 - Una sola familia: Bricolage Grotesque (autoalojada con Fontsource).
-- Movimiento: la V de la portada se dibuja una vez al cargar. La ilustración del teléfono (Webs) corre en ciclo de 11 s **solo mientras está a la vista** (QR con barrido, menú con toque, mensaje enviado) y se detiene al salir; la de la licencia (Licencias) corre una vez al entrar en pantalla (`src/scripts/enVista.ts`, `data-repite` para las cíclicas). Todo respeta `prefers-reduced-motion` y se queda en el estado final. Las ilustraciones son genéricas a propósito: no muestran restaurantes reales, claves reales ni logotipos de terceros.
+- Movimiento: la V de la portada se dibuja una vez al cargar. La ilustración del teléfono (Webs) corre en ciclo de 11 s **solo mientras está a la vista** (QR con barrido, menú con toque, mensaje enviado) y se detiene al salir; la de la licencia (Licencias) corre en ciclo de 7 s con la misma regla (`src/scripts/enVista.ts`, atributo `data-repite`). Todo respeta `prefers-reduced-motion` y se queda en el estado final. Las ilustraciones son genéricas a propósito: no muestran restaurantes reales, claves reales ni logotipos de terceros.
 - Escala de 5 tamaños. Sin tarjetas iguales, sin mayúsculas decorativas, sin iconos de adorno.
 - Antes de cambiar el diseño, cargar la skill `frontend-design` y revisar la lista anti-slop del CLAUDE.md de `design`.
 
