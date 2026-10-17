@@ -17,12 +17,18 @@ Objetivo único: que el visitante escriba por WhatsApp.
 ## Dirección de diseño: "Papel"
 - Paleta (en `src/styles/global.css`): papel `#f7f6fb`, tinta `#16121f`, violeta `#5b2bd9`, lila `#e9e3fb`, gris `#655f78`. Violeta plano, **sin degradados**.
 - Una sola familia: Bricolage Grotesque (autoalojada con Fontsource).
-- Movimiento: la V de la portada se dibuja una vez al cargar. La ilustración del teléfono (Webs) corre en ciclo de 11 s **solo mientras está a la vista** (QR con barrido, menú con toque, mensaje enviado) y se detiene al salir; la de la licencia (Licencias) corre en ciclo de 7 s con la misma regla (`src/scripts/enVista.ts`, atributo `data-repite`). Todo respeta `prefers-reduced-motion` y se queda en el estado final. Las ilustraciones son genéricas a propósito: no muestran restaurantes reales, claves reales ni logotipos de terceros.
+- Movimiento: la V de la portada se revela una vez al cargar. La ilustración del teléfono (Webs) corre en ciclo de 11 s **solo mientras está a la vista** (QR con barrido, menú con toque, mensaje enviado) y se detiene al salir; la de la licencia (Licencias) corre en ciclo de 7 s con la misma regla (`src/scripts/enVista.ts`, atributo `data-repite`). Todo respeta `prefers-reduced-motion` y se queda en el estado final. Las ilustraciones son genéricas a propósito: no muestran restaurantes reales, claves reales ni logotipos de terceros.
 - Escala de 5 tamaños. Sin tarjetas iguales, sin mayúsculas decorativas, sin iconos de adorno.
 - Antes de cambiar el diseño, cargar la skill `frontend-design` y revisar la lista anti-slop del CLAUDE.md de `design`.
 
 ## Estructura de la portada
-Primero la empresa (titular, "Qué es Valeny" con Simple / Seguro / Tecnológico) y después las soluciones, cada una con su logotipo y su animación: **Valeny Webs** (logotipo propio: ventana con la V) y **Valeny Store** (logotipo `src/assets/valeny-store.webp`, entregado por el cliente). Al sumar una solución nueva, agregar un bloque `<article class="solucion">` en `index.astro`.
+Primero la empresa (titular, "Qué es Valeny" con Simple / Seguro / Tecnológico) y después las soluciones, cada una con su logotipo y su animación: **Valeny Webs** (logotipo propio: la V dentro de un marco de escaneo de QR) y **Valeny Store** (logotipo `src/assets/valeny-store.webp`, entregado por el cliente). Al sumar una solución nueva, agregar un bloque `<article class="solucion">` en `index.astro`.
+
+## Logotipo
+- La V es un listón con hueco (bucle) y un brazo continuo con barrido y punta hacia la izquierda; la palabra "valeny" va en Bricolage Grotesque 600 convertida a curvas. La V parte de la de Valeny Store (V y S entrelazadas), así que la familia se parece: Valeny = V sola, Valeny Webs = V + marco de escaneo, Valeny Store = V + S.
+- Variantes: horizontal (cabecera), apilada con la palabra del ancho de la V (pie, imagen para compartir) y V sola (favicon). Componente `Logo.astro` con la prop `variante`; geometría en `src/data/marca.ts` (generada, no editar a mano).
+- SVG listos para usar en `public/brand/` (horizontal, apilado, apilado-blanco, v, webs).
+- Pendiente: pedir el vectorial original del logo de Valeny Store; la V de aquí se reconstruyó a partir de una imagen de 1300 px.
 
 ## Datos
 - `src/data/valeny.json`: contacto (WhatsApp, correo), dominio y datos de Valeny Store.

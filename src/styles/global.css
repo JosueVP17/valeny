@@ -183,9 +183,13 @@ h3 {
   color: var(--tinta);
 }
 .logo svg {
-  height: 2rem;
+  height: 2.5rem;
   width: auto;
   display: block;
+}
+.pie .logo svg.logo-pie {
+  height: auto;
+  width: 7.5rem;
 }
 .cabecera nav {
   display: flex;
@@ -680,7 +684,7 @@ h3 {
 /* ---- Ajustes para pantallas muy angostas ---- */
 @media (max-width: 24rem) {
   .logo svg {
-    height: 1.65rem;
+    height: 2rem;
   }
   .cabecera nav {
     gap: 0.75rem;

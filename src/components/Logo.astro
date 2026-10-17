@@ -1,15 +1,46 @@
 ---
-// Logotipo de Valeny: monograma V con nodo y palabra "valeny" convertida a curvas (Bricolage Grotesque Bold).
-interface Props { class?: string; solo?: "monograma"; titulo?: string }
-const { class: clase, solo, titulo = "Valeny" } = Astro.props;
+// Logotipo de Valeny. La geometría vive en src/data/marca.ts (generada del diseño aprobado).
+// variante: "horizontal" (cabecera), "apilado" (pie, portadas), "simbolo" (solo la V).
+import { V, PALABRA } from "../data/marca.ts";
+
+interface Props {
+  class?: string;
+  variante?: "horizontal" | "apilado" | "simbolo";
+  titulo?: string;
+}
+const { class: clase, variante = "horizontal", titulo = "Valeny" } = Astro.props;
+
+const c = V.caja;
+const ancho = c.x1 - c.x0;
+const tinta = PALABRA.maxX - PALABRA.minX;
+const r = (n: number) => Math.round(n * 100) / 100;
+
+let viewBox = "";
+let transformPalabra = "";
+if (variante === "simbolo") {
+  viewBox = `${c.x0 - 8} ${c.y0 - 9} ${ancho + 16} ${c.y1 - c.y0 + 18}`;
+} else if (variante === "apilado") {
+  const k = ancho / tinta;
+  const alto = c.y1 + 110 + (PALABRA.maxY - PALABRA.minY) * k;
+  viewBox = `${c.x0 - 8} ${c.y0 - 9} ${ancho + 16} ${r(alto - c.y0 + 18)}`;
+  transformPalabra = `translate(${r(c.x0 - PALABRA.minX * k)} ${r(c.y1 + 110 - PALABRA.minY * k)}) scale(${r(k)})`;
+} else {
+  const k = 700 / 440;
+  const x = c.x1 + 140 - PALABRA.minX * k;
+  viewBox = `${c.x0 - 8} ${c.y0 - 9} ${r(x + PALABRA.maxX * k - c.x0 + 16)} ${c.y1 - c.y0 + 18}`;
+  transformPalabra = `translate(${r(x)} 844) scale(${r(k)})`;
+}
+const decorativo = titulo === "";
 ---
-{solo === "monograma" ? (
-  <svg class={clase} viewBox="0 0 48 48" role="img" aria-label={titulo} xmlns="http://www.w3.org/2000/svg">
-    <path d="M7 9L24 40L41 9" fill="none" stroke="var(--violeta)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="41" cy="9" r="5.2" fill="var(--violeta)"/>
-  </svg>
-) : (
-  <svg class={clase} viewBox="0 -4 227.8 54" role="img" aria-label={titulo} xmlns="http://www.w3.org/2000/svg">
-    <g transform="scale(0.9167)"><path d="M7 9L24 40L41 9" fill="none" stroke="var(--violeta)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="41" cy="9" r="5.2" fill="var(--violeta)"/></g>
-    <path transform="translate(58.00 36)" fill="currentColor" d="M20.79 0L10.04 0L0.59-28.30L9.18-28.30L15.17-6.16L16.04-6.16L22.03-28.30L30.29-28.30 M40.01 0.76Q37.64 0.76 35.80-0.19Q33.97-1.13 32.94-2.92Q31.91-4.70 31.91-7.34Q31.91-9.67 32.80-11.23Q33.70-12.80 35.42-13.77Q37.15-14.74 39.69-15.39Q42.23-16.04 45.47-16.52Q47.20-16.79 48.30-17.04Q49.41-17.28 49.95-17.85Q50.49-18.41 50.49-19.49Q50.49-21.01 49.41-22.09Q48.33-23.17 46.01-23.17Q44.44-23.17 43.12-22.63Q41.80-22.09 40.85-21.01Q39.91-19.93 39.47-18.25L32.62-20.36Q33.26-22.57 34.48-24.19Q35.69-25.81 37.42-26.92Q39.15-28.03 41.36-28.57Q43.58-29.11 46.17-29.11Q50.33-29.11 52.95-27.78Q55.57-26.46 56.86-23.68Q58.16-20.90 58.16-16.52L58.16-11.66Q58.16-9.77 58.24-7.83Q58.32-5.89 58.45-3.92Q58.59-1.94 58.75 0L51.89 0Q51.68-1.35 51.49-3.10Q51.30-4.86 51.19-6.64L50.22-6.64Q49.46-4.59 48.06-2.92Q46.66-1.24 44.63-0.24Q42.61 0.76 40.01 0.76M43.31-4.86Q44.33-4.86 45.39-5.24Q46.44-5.62 47.44-6.29Q48.44-6.97 49.27-7.99Q50.11-9.02 50.65-10.31L50.54-13.88Q50.06-13.66 49.52-13.50Q48.22-13.07 46.84-12.85Q45.47-12.64 44.12-12.37Q42.77-12.10 41.72-11.66Q40.66-11.23 40.04-10.50Q39.42-9.77 39.42-8.48Q39.42-6.80 40.50-5.83Q41.58-4.86 43.31-4.86 M71.55 0L63.88 0L63.88-38.61L71.55-38.61 M90.77 0.76Q87.26 0.76 84.54-0.22Q81.81-1.19 79.92-3.02Q78.03-4.86 77.03-7.56Q76.03-10.26 76.03-13.66Q76.03-17.01 76.98-19.84Q77.92-22.68 79.76-24.76Q81.59-26.84 84.24-27.97Q86.89-29.11 90.23-29.11Q93.47-29.11 96.01-28.05Q98.55-27 100.25-24.89Q101.95-22.79 102.73-19.74Q103.52-16.69 103.30-12.74L83.48-12.53Q83.70-8.91 85.48-7.07Q87.48-4.91 90.77-4.91Q92.29-4.91 93.34-5.32Q94.39-5.72 95.07-6.37Q95.74-7.02 96.15-7.83Q96.55-8.64 96.82-9.45L103.57-7.99Q103.09-5.99 102.14-4.40Q101.20-2.81 99.63-1.65Q98.06-0.49 95.88 0.14Q93.69 0.76 90.77 0.76M83.70-16.79L96.17-16.96Q96.12-18.41 95.69-19.49Q94.93-21.33 93.50-22.19Q92.07-23.06 90.34-23.06Q88.29-23.06 86.72-21.98Q85.16-20.90 84.29-18.85Q83.92-17.87 83.70-16.79 M115.67 0L107.89 0L107.89-28.35L114.26-28.35L114.21-19.87L115.29-19.87Q115.99-22.95 117.29-25Q118.58-27.05 120.55-28.08Q122.53-29.11 125.23-29.11Q130.14-29.11 132.70-25.65Q135.27-22.19 135.27-14.80L135.27 0L127.44 0L127.44-13.93Q127.44-18.47 126.12-20.55Q124.79-22.63 122.26-22.63Q120.10-22.63 118.64-21.28Q117.18-19.93 116.45-17.74Q115.72-15.55 115.67-12.85 M151.63 9.83Q149.47 9.83 147.23 9.42Q144.99 9.02 143.02 8.18Q141.05 7.34 139.64 6.05L141.86-0.59Q143.59 1.19 146.18 2.08Q148.77 2.97 151.31 2.97Q154.17 2.97 156.09 1.81Q158 0.65 159-1.75Q160-4.16 160.16-7.78L160.49-12.69L159.30-12.69Q158.76-9.13 157.55-6.86Q156.33-4.59 154.47-3.54Q152.60-2.48 150.07-2.48Q146.99-2.48 144.88-4.05Q142.78-5.62 141.72-8.75Q140.67-11.88 140.67-16.47L140.67-28.35L148.45-28.35L148.45-18.36Q148.45-13.34 149.58-11.12Q150.71-8.91 153.04-8.91Q154.28-8.91 155.30-9.58Q156.33-10.26 157.06-11.56Q157.79-12.85 158.19-14.71Q158.60-16.58 158.60-18.95L158.60-28.35L166.37-28.35L166.37-7.51Q166.37-4.10 165.78-1.32Q165.19 1.46 164.03 3.54Q162.86 5.62 161.08 7.02Q159.30 8.42 156.95 9.13Q154.60 9.83 151.63 9.83" />
-  </svg>
-)}
+<svg
+  class={clase}
+  viewBox={viewBox}
+  role={decorativo ? undefined : "img"}
+  aria-label={decorativo ? undefined : titulo}
+  aria-hidden={decorativo ? "true" : undefined}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path fill="var(--violeta)" fill-rule="evenodd" d={`${V.bucle} ${V.hueco}`} />
+  <path fill="var(--violeta)" d={V.brazo} />
+  {variante !== "simbolo" && <path transform={transformPalabra} fill="currentColor" d={PALABRA.d} />}
+</svg>

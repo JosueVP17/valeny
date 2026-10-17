@@ -5,3 +5,8 @@ dist/
 .env.*
 !.env.example
 *.log
+
+# tableros de trabajo del logo
+logo-direcciones.*
+/logo-*.png
+/logo-*.svg
