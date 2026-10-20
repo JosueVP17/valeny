@@ -6,7 +6,7 @@ import LogoWebs from "../components/LogoWebs.astro";
 import DemoTelefono from "../components/DemoTelefono.astro";
 import DemoLicencia from "../components/DemoLicencia.astro";
 import logoStore from "../assets/valeny-store.webp";
-import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
+import { valeny, catalogo, pesos, urlWhatsApp, MENSAJES } from "../data/index.ts";
 ---
 <Base>
   <section class="contenedor portada" aria-labelledby="titulo-portada">
@@ -60,7 +60,16 @@ import { valeny, urlWhatsApp, MENSAJES } from "../data/index.ts";
         </div>
         <h3 id="titulo-webs">Webs para restaurantes</h3>
         <p>Cada restaurante recibe un sitio con su propio diseño y su propio dominio: menú digital, código QR para las mesas, pedido para recoger y solicitud de reservación por WhatsApp.</p>
-        <a class="btn" href="/webs">Ver planes</a>
+        <dl class="precios">
+          {catalogo.planes.filter((p) => "unico" in p).map((p) => (
+            <div>
+              <dt>{p.nombre}</dt>
+              <dd><strong>{pesos(p.unico)}</strong> <span>pago único + {pesos(p.mensual)} al mes</span></dd>
+            </div>
+          ))}
+        </dl>
+        <p class="precios-nota">Precios en pesos mexicanos. El dominio se paga aparte.</p>
+        <a class="btn" href="/webs">Ver planes completos</a>
       </div>
       <DemoTelefono />
     </div>
