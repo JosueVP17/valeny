@@ -21,7 +21,7 @@ Que el visitante escriba por WhatsApp. Un solo botón principal en todo el sitio
 - **Color:** morado (pedido explícito del cliente).
 - **Personalidad (3 palabras):** minimalista, seguro, tecnológico.
 - **Alcance:** "global". Debe poder crecer a más soluciones sin rediseñarse. Idioma inicial: español de México.
-- **Logo:** la V madre, tomada de la del logo de Valeny Store y rediseñada como trazo continuo (listón con hueco, barrido y punta hacia la izquierda), con la palabra "valeny" debajo. Valeny Webs = V dentro de un marco de escaneo de QR. Valeny Store conserva su logo (V y S con degradado).
+- **Logo:** la V madre, tomada de la del logo de Valeny Store y rediseñada como trazo continuo (listón con hueco, barrido y punta hacia la izquierda), con la palabra "valeny" debajo. Valeny Webs = V con cinco módulos de QR en el hueco. Idea reservada para un servicio futuro: V con anillo entrelazado (`marca/ideas/valeny-anillo.svg`). Valeny Store conserva su logo (V y S con degradado).
 
 ## Quién está detrás
 Estudiante de licenciatura e ingeniero de aprendizaje automático (ML). No tiene años de experiencia diseñando webs. El sitio no debe inflar credenciales ni inventar trayectoria: la confianza viene de lo concreto (qué incluye cada plan, cómo se trabaja, qué se promete y qué no).

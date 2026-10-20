@@ -1,5 +1,5 @@
 ---
-// Marca de "Valeny Webs": la V de Valeny dentro de un marco de escaneo de QR.
+// Marca de "Valeny Webs": la V de Valeny con cinco módulos de QR en su hueco.
 import { V } from "../data/marca.ts";
 
 interface Props {
@@ -8,14 +8,13 @@ interface Props {
 }
 const { class: clase, titulo = "Valeny Webs" } = Astro.props;
 
-const c = V.caja;
-const m = 90, arm = 210, r = 84, sw = 62;
-const X0 = c.x0 - m, Y0 = c.y0 - m, X1 = c.x1 + m, Y1 = c.y1 + m;
-const marco = `M ${X0} ${Y0 + arm} V ${Y0 + r} Q ${X0} ${Y0} ${X0 + r} ${Y0} H ${X0 + arm} M ${X1 - arm} ${Y0} H ${X1 - r} Q ${X1} ${Y0} ${X1} ${Y0 + r} V ${Y0 + arm} M ${X1} ${Y1 - arm} V ${Y1 - r} Q ${X1} ${Y1} ${X1 - r} ${Y1} H ${X1 - arm} M ${X0 + arm} ${Y1} H ${X0 + r} Q ${X0} ${Y1} ${X0} ${Y1 - r} V ${Y1 - arm}`;
-const viewBox = `${X0 - sw / 2 - 8} ${Y0 - sw / 2 - 8} ${X1 - X0 + sw + 16} ${Y1 - Y0 + sw + 16}`;
+const k = 82, g = 26, ox = 600, oy = 380;
+const celdas = [[0, 0], [2, 0], [1, 1], [0, 2], [2, 2]];
 ---
-<svg class={clase} viewBox={viewBox} role="img" aria-label={titulo} xmlns="http://www.w3.org/2000/svg">
-  <path d={marco} fill="none" stroke="#9b7bf0" stroke-width={sw} stroke-linecap="round" stroke-linejoin="round" />
+<svg class={clase} viewBox="30 140 1070 1045" role="img" aria-label={titulo} xmlns="http://www.w3.org/2000/svg">
   <path fill="var(--violeta)" fill-rule="evenodd" d={`${V.bucle} ${V.hueco}`} />
   <path fill="var(--violeta)" d={V.brazo} />
+  {celdas.map(([x, y]) => (
+    <rect x={ox + x * (k + g)} y={oy + y * (k + g)} width={k} height={k} rx="17" fill="#9b7bf0" />
+  ))}
 </svg>
