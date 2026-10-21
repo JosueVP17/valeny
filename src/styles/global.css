@@ -455,6 +455,16 @@ h3 {
   gap: 1.75rem;
   justify-items: start;
 }
+.encabezado-titulo {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.75rem);
+}
+.encabezado-logo {
+  flex: none;
+  width: clamp(3.75rem, 11vw, 6.5rem);
+  height: auto;
+}
 .encabezado h1 {
   font-size: clamp(2.4rem, 7.5vw, 4.5rem);
   max-width: 16ch;

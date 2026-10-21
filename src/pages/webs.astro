@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import LogoWebs from "../components/LogoWebs.astro";
 import { catalogo, pesos, urlWhatsApp, mensajePlan, MENSAJES } from "../data/index.ts";
 
 const titulo = "Webs para restaurantes en todo México | Valeny";
@@ -7,7 +8,10 @@ const descripcion = "Sitio con diseño propio para tu restaurante: menú digital
 ---
 <Base titulo={titulo} descripcion={descripcion}>
   <section class="contenedor encabezado" aria-labelledby="titulo-webs">
-    <h1 id="titulo-webs">Webs para restaurantes</h1>
+    <div class="encabezado-titulo">
+      <LogoWebs class="encabezado-logo" />
+      <h1 id="titulo-webs">Webs para restaurantes</h1>
+    </div>
     <p class="lema">Un sitio hecho para tu restaurante, con tu menú, tu horario y tu dominio. Tus clientes piden y reservan por WhatsApp.</p>
     <a class="btn" href={urlWhatsApp(MENSAJES.general)} rel="noopener" target="_blank">Cotizar por WhatsApp</a>
   </section>
