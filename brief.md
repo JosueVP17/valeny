@@ -43,4 +43,4 @@ Definidos en `src/data/planes.json` (Menú $2,500 + $250/mes; Pedidos $4,500 + $
 ## Contacto
 - WhatsApp Business: +52 411 111 3954
 - Correo: soporte@valeny.app (Cloudflare Email Routing recibe y reenvía; Resend envía por SMTP desde Gmail)
-- Instagram y otras redes: [PENDIENTE]
+- Instagram: @valeny.app (https://www.instagram.com/valeny.app/)
