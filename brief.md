@@ -33,7 +33,7 @@ Estudiante de licenciatura e ingeniero de aprendizaje automático (ML). No tiene
 - Afirmaciones de seguridad solo si son verificables y concretas (HTTPS, sin base de datos ni cuentas en los sitios de restaurantes, qué datos se guardan y cuáles no). Nada de "máxima seguridad" sin respaldo.
 
 ## Planes de webs para restaurantes
-Definidos en `src/data/planes.json` (Menú $2,500 + $250/mes; Pedidos $4,500 + $400/mes; Pro en desarrollo). Los precios son propuesta inicial aceptada por el cliente; calibrar con las horas reales por sitio. Idea: precio de lanzamiento para los primeros clientes a cambio de permiso para mostrar su sitio como caso.
+Definidos en `src/data/planes.json` (Menú $2,500 y Pedidos $4,500 de pago único; la mensualidad es la misma, $250, en todos los planes; Pro en desarrollo). Los precios son propuesta inicial aceptada por el cliente; calibrar con las horas reales por sitio. Idea: precio de lanzamiento para los primeros clientes a cambio de permiso para mostrar su sitio como caso.
 
 ## Decisiones técnicas abiertas
 - **URL de los sitios de clientes:** cada uno con su propio dominio, incluido en la mensualidad. Se compra con la cuenta de Valeny pero el titular es el cliente; al irse, se le da el código de transferencia.
