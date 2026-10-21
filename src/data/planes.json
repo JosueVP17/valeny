@@ -2,7 +2,7 @@
   "moneda": "MXN",
   "mensualidadIncluye": [
     "Alojamiento del sitio",
-    "Tu dominio (.mx o .com), registrado a tu nombre y renovado cada año",
+    "Renovación anual de tu dominio",
     "Mantenimiento",
     "Soporte por WhatsApp",
     "2 cambios de menú al mes"
@@ -19,6 +19,7 @@
       "mensual": 250,
       "incluye": [
         "Sitio con diseño propio para tu restaurante",
+        "Tu propio dominio (.mx o .com) incluido, registrado a tu nombre",
         "Menú digital con precios y variantes",
         "Código QR para las mesas",
         "Horario, mapa, teléfono y redes",
