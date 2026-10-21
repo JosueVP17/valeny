@@ -35,7 +35,7 @@ Primero la empresa (titular, "Qué es Valeny" con Simple / Seguro / Tecnológico
 - `src/data/valeny.json`: contacto (WhatsApp, correo), dominio y datos de Valeny Store.
 - `src/data/planes.json`: planes, precios y condiciones. Es la única fuente de precios.
 - `src/data/index.ts` valida ambos en el build y falla con mensaje claro.
-- **Correo:** hoy `soporte@valenystore.com.mx`. Cuando exista `soporte@valeny.app`, cambiar solo `correo` en `valeny.json`.
+- **Correo:** `soporte@valeny.app`. Se recibe con Cloudflare Email Routing (reenvía a Gmail) y se responde desde Gmail con SMTP de Resend. Para cambiarlo, solo `correo` en `valeny.json`.
 
 ## Comandos
 ```bash
