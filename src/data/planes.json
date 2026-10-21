@@ -2,12 +2,12 @@
   "moneda": "MXN",
   "mensualidadIncluye": [
     "Alojamiento del sitio",
+    "Tu dominio (.mx o .com), registrado a tu nombre y renovado cada año",
     "Mantenimiento",
     "Soporte por WhatsApp",
     "2 cambios de menú al mes"
   ],
   "noIncluye": [
-    "El dominio de tu restaurante (se registra a tu nombre y se paga aparte)",
     "Fotos profesionales ni redacción de textos"
   ],
   "planes": [
