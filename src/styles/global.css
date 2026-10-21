@@ -5,7 +5,9 @@
 :root {
   --papel: #f7f6fb;
   --tinta: #16121f;
-  --violeta: #5b2bd9;
+  --violeta: #5d37d1;
+  --violeta-claro: #8d3ff2;
+  --violeta-oscuro: #2c1c6b;
   --lila: #e9e3fb;
   --gris: #655f78;
   --linea: #d9d4e8;
@@ -183,13 +185,13 @@ h3 {
   color: var(--tinta);
 }
 .logo svg {
-  height: 2.5rem;
+  height: 3rem;
   width: auto;
   display: block;
 }
 .pie .logo svg.logo-pie {
-  height: auto;
-  width: 7.5rem;
+  height: 3.25rem;
+  width: auto;
 }
 .cabecera nav {
   display: flex;
@@ -684,7 +686,7 @@ h3 {
 /* ---- Ajustes para pantallas muy angostas ---- */
 @media (max-width: 24rem) {
   .logo svg {
-    height: 2rem;
+    height: 2.4rem;
   }
   .cabecera nav {
     gap: 0.75rem;

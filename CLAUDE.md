@@ -15,7 +15,7 @@ Objetivo único: que el visitante escriba por WhatsApp.
 - Toda la UI en español de México. Cada dependencia nueva se justifica.
 
 ## Dirección de diseño: "Papel"
-- Paleta (en `src/styles/global.css`): papel `#f7f6fb`, tinta `#16121f`, violeta `#5b2bd9`, lila `#e9e3fb`, gris `#655f78`. Violeta plano, **sin degradados**.
+- Paleta (en `src/styles/global.css`): papel `#f7f6fb`, tinta `#16121f`, violeta `#5d37d1` (el medio del logo), violeta claro `#8d3ff2`, violeta oscuro `#2c1c6b`, lila `#e9e3fb`, gris `#655f78`. La interfaz es violeta **plano**; el único degradado del sitio es el del logotipo.
 - Una sola familia: Bricolage Grotesque (autoalojada con Fontsource).
 - Movimiento: la V de la portada se revela una vez al cargar. La ilustración del teléfono (Webs) corre en ciclo de 11 s **solo mientras está a la vista** (QR con barrido, menú con toque, mensaje enviado) y se detiene al salir; la de la licencia (Licencias) corre en ciclo de 7 s con la misma regla (`src/scripts/enVista.ts`, atributo `data-repite`). Todo respeta `prefers-reduced-motion` y se queda en el estado final. Las ilustraciones son genéricas a propósito: no muestran restaurantes reales, claves reales ni logotipos de terceros.
 - Escala de 5 tamaños. Sin tarjetas iguales, sin mayúsculas decorativas, sin iconos de adorno.
@@ -25,11 +25,11 @@ Objetivo único: que el visitante escriba por WhatsApp.
 Primero la empresa (titular, "Qué es Valeny" con Simple / Seguro / Tecnológico) y después las soluciones, cada una con su logotipo y su animación: **Valeny Webs** (logotipo propio: la V con cinco módulos de QR en su hueco) y **Valeny Store** (logotipo `src/assets/valeny-store.webp`, entregado por el cliente). Al sumar una solución nueva, agregar un bloque `<article class="solucion">` en `index.astro`.
 
 ## Logotipo
-- La V es un listón con hueco (bucle) y un brazo continuo con barrido y punta hacia la izquierda; la palabra "valeny" va en Bricolage Grotesque 600 convertida a curvas. La V parte de la de Valeny Store (V y S entrelazadas), así que la familia se parece: Valeny = V sola, Valeny Webs = V + módulos de QR, Valeny Store = V + S.
-- Variantes: horizontal (cabecera), apilada con la palabra del ancho de la V (pie, imagen para compartir) y V sola (favicon). Componente `Logo.astro` con la prop `variante`; geometría en `src/data/marca.ts` (generada, no editar a mano).
-- SVG listos para usar en `public/brand/` (horizontal, apilado, apilado-blanco, v, webs).
-- Idea reservada para un servicio futuro: V con anillo entrelazado, en `marca/ideas/valeny-anillo.svg` (no se usa en el sitio).
-- Pendiente: pedir el vectorial original del logo de Valeny Store; la V de aquí se reconstruyó a partir de una imagen de 1300 px.
+- Diseño entregado por el cliente: `marca/originales/Valeny-2.2.png` (V + "aleny") y `marca/originales/V-2.png` (solo la V). Son PNG; el sitio usa una **vectorización propia** (`src/data/marca.ts`, generada, no editar a mano): una ruta por pieza (bucle de la V, brazo, letras) con degradado lineal claro `#8d3ff2` → medio `#5d37d1` → oscuro `#2c1c6b`, ajustado a los píxeles del original (error medio ≈ 1 nivel de color).
+- Variantes: horizontal (cabecera y pie: la V es la primera letra) y símbolo (solo la V: portada, favicon). Componente `Logo.astro` con la prop `variante`. No hay versión apilada.
+- Valeny Webs = V con cinco módulos de QR en su boca (`LogoWebs.astro`). Valeny Store conserva su propio logo.
+- SVG listos en `public/brand/` (horizontal, v, webs). Idea reservada para un servicio futuro: anillo entrelazado (`marca/ideas/valeny-anillo.svg`, con la V anterior; habría que rehacerlo con la V nueva).
+- Pendiente: pedir los vectoriales originales (PDF/SVG/AI) del logo de Valeny y de Valeny Store.
 
 ## Datos
 - `src/data/valeny.json`: contacto (WhatsApp, correo), dominio y datos de Valeny Store.

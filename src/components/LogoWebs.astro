@@ -1,6 +1,6 @@
 ---
-// Marca de "Valeny Webs": la V de Valeny con cinco módulos de QR en su hueco.
-import { V } from "../data/marca.ts";
+// Marca de "Valeny Webs": la V de Valeny con cinco módulos de QR en su boca.
+import { SIMBOLO, COLORES, MODULOS_WEBS, nuevoId } from "../data/marca.ts";
 
 interface Props {
   class?: string;
@@ -8,13 +8,23 @@ interface Props {
 }
 const { class: clase, titulo = "Valeny Webs" } = Astro.props;
 
-const k = 82, g = 26, ox = 600, oy = 380;
+const c = SIMBOLO.caja;
+const { k, g, ox, oy } = MODULOS_WEBS;
 const celdas = [[0, 0], [2, 0], [1, 1], [0, 2], [2, 2]];
+const id = nuevoId();
 ---
-<svg class={clase} viewBox="30 140 1070 1045" role="img" aria-label={titulo} xmlns="http://www.w3.org/2000/svg">
-  <path fill="var(--violeta)" fill-rule="evenodd" d={`${V.bucle} ${V.hueco}`} />
-  <path fill="var(--violeta)" d={V.brazo} />
+<svg class={clase} viewBox={`${c.x0} ${c.y0} ${c.x1 - c.x0} ${c.y1 - c.y0}`} role="img" aria-label={titulo} xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    {Object.entries(SIMBOLO.grad).map(([nombre, v]) => (
+      <linearGradient id={`${id}-${nombre}`} gradientUnits="userSpaceOnUse" x1={v.x1} y1={v.y1} x2={v.x2} y2={v.y2}>
+        <stop offset="0" stop-color={COLORES.claro} />
+        <stop offset={v.m} stop-color={COLORES.medio} />
+        <stop offset="1" stop-color={COLORES.oscuro} />
+      </linearGradient>
+    ))}
+  </defs>
+  {SIMBOLO.piezas.map((p) => <path fill={`url(#${id}-${p.g})`} fill-rule="evenodd" d={p.d} />)}
   {celdas.map(([x, y]) => (
-    <rect x={ox + x * (k + g)} y={oy + y * (k + g)} width={k} height={k} rx="17" fill="#9b7bf0" />
+    <rect x={ox + x * (k + g)} y={oy + y * (k + g)} width={k} height={k} rx="7" fill={COLORES.claro} />
   ))}
 </svg>

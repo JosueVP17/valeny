@@ -1,35 +1,19 @@
 ---
-// Logotipo de Valeny. La geometría vive en src/data/marca.ts (generada del diseño aprobado).
-// variante: "horizontal" (cabecera), "apilado" (pie, portadas), "simbolo" (solo la V).
-import { V, PALABRA } from "../data/marca.ts";
+// Logotipo de Valeny. La geometría vive en src/data/marca.ts (vectorizada del diseño entregado).
+// variante: "horizontal" (la V y la palabra, como en el diseño) o "simbolo" (solo la V).
+import { HORIZONTAL, SIMBOLO, COLORES, nuevoId } from "../data/marca.ts";
 
 interface Props {
   class?: string;
-  variante?: "horizontal" | "apilado" | "simbolo";
+  variante?: "horizontal" | "simbolo";
   titulo?: string;
 }
 const { class: clase, variante = "horizontal", titulo = "Valeny" } = Astro.props;
 
-const c = V.caja;
-const ancho = c.x1 - c.x0;
-const tinta = PALABRA.maxX - PALABRA.minX;
-const r = (n: number) => Math.round(n * 100) / 100;
-
-let viewBox = "";
-let transformPalabra = "";
-if (variante === "simbolo") {
-  viewBox = `${c.x0 - 8} ${c.y0 - 9} ${ancho + 16} ${c.y1 - c.y0 + 18}`;
-} else if (variante === "apilado") {
-  const k = ancho / tinta;
-  const alto = c.y1 + 110 + (PALABRA.maxY - PALABRA.minY) * k;
-  viewBox = `${c.x0 - 8} ${c.y0 - 9} ${ancho + 16} ${r(alto - c.y0 + 18)}`;
-  transformPalabra = `translate(${r(c.x0 - PALABRA.minX * k)} ${r(c.y1 + 110 - PALABRA.minY * k)}) scale(${r(k)})`;
-} else {
-  const k = 700 / 440;
-  const x = c.x1 + 140 - PALABRA.minX * k;
-  viewBox = `${c.x0 - 8} ${c.y0 - 9} ${r(x + PALABRA.maxX * k - c.x0 + 16)} ${c.y1 - c.y0 + 18}`;
-  transformPalabra = `translate(${r(x)} 844) scale(${r(k)})`;
-}
+const dibujo = variante === "simbolo" ? SIMBOLO : HORIZONTAL;
+const c = dibujo.caja;
+const viewBox = `${c.x0} ${c.y0} ${c.x1 - c.x0} ${c.y1 - c.y0}`;
+const id = nuevoId();
 const decorativo = titulo === "";
 ---
 <svg
@@ -40,7 +24,14 @@ const decorativo = titulo === "";
   aria-hidden={decorativo ? "true" : undefined}
   xmlns="http://www.w3.org/2000/svg"
 >
-  <path fill="var(--violeta)" fill-rule="evenodd" d={`${V.bucle} ${V.hueco}`} />
-  <path fill="var(--violeta)" d={V.brazo} />
-  {variante !== "simbolo" && <path transform={transformPalabra} fill="currentColor" d={PALABRA.d} />}
+  <defs>
+    {Object.entries(dibujo.grad).map(([g, v]) => (
+      <linearGradient id={`${id}-${g}`} gradientUnits="userSpaceOnUse" x1={v.x1} y1={v.y1} x2={v.x2} y2={v.y2}>
+        <stop offset="0" stop-color={COLORES.claro} />
+        <stop offset={v.m} stop-color={COLORES.medio} />
+        <stop offset="1" stop-color={COLORES.oscuro} />
+      </linearGradient>
+    ))}
+  </defs>
+  {dibujo.piezas.map((p) => <path fill={`url(#${id}-${p.g})`} fill-rule="evenodd" d={p.d} />)}
 </svg>
