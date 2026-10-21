@@ -31,6 +31,9 @@ Primero la empresa (titular, "Qué es Valeny" con Simple / Seguro / Tecnológico
 - SVG listos en `public/brand/` (horizontal, v, webs). Idea reservada para un servicio futuro: anillo entrelazado (`marca/ideas/valeny-anillo.svg`, con la V anterior; habría que rehacerlo con la V nueva).
 - Pendiente: pedir los vectoriales originales (PDF/SVG/AI) del logo de Valeny y de Valeny Store.
 
+## Ventas
+- `ventas/mensajes-restaurantes.md`: mensajes base para contactar restaurantes con un demo ya hecho (apertura con enlace, qué incluye, tarjetas, transparencia, precio, cierre y seguimiento) y las reglas comerciales vigentes. Los precios no se repiten ahí: salen de `planes.json`.
+
 ## Datos
 - `src/data/valeny.json`: contacto (WhatsApp, correo), dominio y datos de Valeny Store.
 - `src/data/planes.json`: planes, precios y condiciones. Es la única fuente de precios.
